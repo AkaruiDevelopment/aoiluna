@@ -1,0 +1,34 @@
+{
+  "name": "uzumi",
+  "version": "0.0.1",
+  "description": "A library to interact with discord api easily ",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "node tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akaruidevelopment/dapi.git"
+  },
+  "keywords": [
+    "discord-api",
+    "discord",
+    "api",
+    "nodejs",
+    "deno",
+    "discordbot"
+  ],
+  "author": "Akarui Development",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/akaruidevelopment/dapi/issues"
+  },
+  "homepage": "https://github.com/akaruidevelopment/dapi#readme",
+  "devDependencies": {
+    "@types/ws": "^8.5.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "ws": "^8.12.0"
+  }
+}

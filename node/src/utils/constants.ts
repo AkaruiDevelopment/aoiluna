@@ -1,0 +1,17 @@
+export const canReconnectOnCodes = {
+    4000: true,
+    4001: true,
+    4002: true,
+    4003: true,
+    4004: false,
+    4005: true,
+    4006: true,
+    4007: true,
+    4008: true,
+    4009: true,
+    4010: false,
+    4011: false,
+    4012: false,
+    4013: false,
+    4014: false,
+}

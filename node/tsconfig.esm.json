@@ -1,8 +1,8 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "module": "NodeNext",
+        "module": "ESNext",
         "outDir": "dist/esm",
-        "moduleResolution": "NodeNext",
+        "target": "ESNext"
     }
 }

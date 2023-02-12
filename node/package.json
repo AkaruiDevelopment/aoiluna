@@ -2,9 +2,19 @@
   "name": "uzumi",
   "version": "0.0.1",
   "description": "A library to interact with discord api easily ",
-  "main": "./dist/index.js",
+  "main": "./dist/cjs/index.js",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
   "scripts": {
-    "test": "node tests"
+    "test": "node tests",
+    "start": "node index.js",
+    "build": "npm run addpkg && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && npm run createpack",
+    "createpack": "node packers/pack.js",
+    "addpkg": "node packers/addpkgjson.js",
+    "bundleTsFiles": "node packers/bundle.js",
+    "lint": "eslint . --ext .ts --fix --ext .js"
   },
   "repository": {
     "type": "git",
@@ -25,10 +35,12 @@
   },
   "homepage": "https://github.com/akaruidevelopment/dapi#readme",
   "devDependencies": {
+    "@types/node": "^18.11.18",
     "@types/ws": "^8.5.4",
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "file-type": "^18.2.0",
     "ws": "^8.12.0"
   }
 }

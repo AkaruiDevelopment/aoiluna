@@ -21,7 +21,7 @@ export async function __request__(
     routeData.bucket = <string>res.headers.get('x-ratelimit-bucket');
     routeData.limit = Number(res.headers.get('x-ratelimit-limit'));
     routeData.remaining = Number(res.headers.get('x-ratelimit-remaining'));
-    routeData.resetAfter = Number(res.headers.get('x-ratelimit-reset-after'));
+    routeData.resetAfter = Number(res.headers.get('x-ratelimit-reset-after'))*1000;
     routeData.reset = Number(res.headers.get('x-ratelimit-reset'));
     routeData.global = res.headers.get('x-ratelimit-global') === 'true';
 

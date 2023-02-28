@@ -237,3 +237,129 @@ export enum Intents
     AutoModerationConfiguration = 1 << 17,
     AutoModerationExecution = 1 << 18,
 }
+
+export enum OverwriteType
+{
+    Role = 0,
+    Member = 1
+}
+
+export enum VerificationLevel
+{
+    None,
+    Low,
+    Medium,
+    High,
+    VeryHigh
+}
+
+export enum DefaultMessageNotifications
+{
+    AllMessages,
+    OnlyMentions
+}
+
+export enum ExplicitContentFilterLevel
+{
+    Disabled,
+    MembersWithoutRoles,
+    AllMembers
+}
+
+export enum MFALevel
+{
+    None,
+    Elevated
+}
+
+export enum PremiumTier
+{
+    None,
+    Tier1,
+    Tier2,
+    Tier3
+}
+
+export enum GuildNSFWLevel
+{
+    Default,
+    Explicit,
+    Safe,
+    AgeRestricted
+}
+
+export enum SystemChannelFlags
+{
+    SuppressJoinNotifications = 1 << 0,
+    SuppressPremiumSubscriptions = 1 << 1,
+    SuppressGuildReminderNotifications = 1 << 2,
+    SuppressJoinNotificationReplies = 1 << 3,
+    SuppressRoleSubscriptionPurchaseNotifications = 1 << 4,
+    SuppressRoleSubscriptionPurchaseNotificationsReplies = 1 << 5,
+}
+
+export enum GuildFeatures
+{
+    AnimatedBanner = 'ANIMATED_BANNER',
+    AnimatedIcon = 'ANIMATED_ICON',
+    ApplicationCommandPermissionsV2 = 'APPLICATION_COMMAND_PERMISSIONS_V2',
+    AutoModeration = 'AUTO_MODERATION',
+    Banner = 'BANNER',
+    Community = 'COMMUNITY',
+    CreatorMonetizableProvisonal = 'CREATOR_MONETIZABLE_PROVISIONAL',
+    CreatorStorePage = 'CREATOR_STORE_PAGE',
+    DeveloperSupportServer = 'DEVELOPER_SUPPORT_SERVER',
+    Discoverable = 'DISCOVERABLE',
+    Featurable = 'FEATURABLE',
+    InvitesDisabled = 'INVITES_DISABLED',
+    InviteSplash = 'INVITE_SPLASH',
+    MemberVerificationGateEnabled = 'MEMBER_VERIFICATION_GATE_ENABLED',
+    MoreStickers = 'MORE_STICKERS',
+    News = 'NEWS',
+    Partnered = 'PARTNERED',
+    PreviewEnabled = 'PREVIEW_ENABLED',
+    RoleIcons = 'ROLE_ICONS',
+    RoleSubscriptionsAvailableForPurchase = 'ROLE_SUBSCRIPTIONS_AVAILABLE_FOR_PURCHASE',
+    RoleSubscriptionsEnabled = 'ROLE_SUBSCRIPTIONS_ENABLED',
+    TicketedEventsEnabled = 'TICKETED_EVENTS_ENABLED',
+    VanityUrl = 'VANITY_URL',
+    VipRegions = 'VIP_REGIONS',
+    Verified = 'VERIFIED',
+    WelcomeScreenEnabled = 'WELCOME_SCREEN_ENABLED',
+}
+
+export enum InviteTargetTypes
+{
+    Stream = 1,
+    EmbeddedApplication
+}
+
+export enum GuildScheduledEventPrivacyLevel
+{
+    Public = 1,
+    GuildOnly
+}
+
+export enum GuildScheduledEventStatus
+{
+    Scheduled = 1,
+    Active,
+    Completed,
+    Cancelled
+}
+
+export enum GuildScheduledEventEntityType
+{
+    StageInstance = 1,
+    Voice,
+    External
+}
+
+export enum ThreadAutoArchiveDuration
+{
+    OneHour = 60,
+    SixHours = 360,
+    OneDay = 1440,
+    ThreeDays = 4320,
+    OneWeek = 10080,
+}

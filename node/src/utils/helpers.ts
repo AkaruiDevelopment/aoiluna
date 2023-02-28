@@ -20,10 +20,30 @@ export function ConvertBigIntToHex(hash: bigint) {
   return hash.toString(16);
 }
 
+export function parseDataToUzumiStandards ( data: any ):any
+{ 
+  if ( data === null ) return null;
+  if(data === undefined ) return undefined;
+  if ( !isNaN( Number( data ) ) && typeof data === 'string' ) return BigInt( data );
+  if ( typeof data === 'object'  && data)
+  {
+    if ( data instanceof Array )
+    {
+      return data.map( ( item ) => parseDataToUzumiStandards( item ) );
+    }
+    for ( const key in data )
+    {
+      data[ key ] = parseDataToUzumiStandards( data[ key ] );
+    }
+    return data;
+  }
+  return data;
+}
+
 export function convertToCamelCase<T extends any>(
   obj: T,
 ): Camelize<T> | Camelize<T>[] | T {
-  if (typeof obj !== 'object') return obj as Camelize<T>;
+  if (typeof obj !== 'object') return parseDataToUzumiStandards(obj) as Camelize<T>;
   if (!obj) return obj as Camelize<T>;
   else if (obj instanceof Array) {
     return obj.map((item) => {

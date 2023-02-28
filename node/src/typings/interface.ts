@@ -5,15 +5,29 @@ import {
   ApplicationRoleConnectionMetadataType,
   ButtonStyles,
   ChannelTypes,
+  DefaultMessageNotifications,
+  ExplicitContentFilterLevel,
   GatewayEventNames,
   GatewayOpCodes,
+  GuildFeatures,
+  GuildNSFWLevel,
+  GuildScheduledEventEntityType,
+  GuildScheduledEventPrivacyLevel,
+  GuildScheduledEventStatus,
   InteractionTypes,
+  InviteTargetTypes,
   KeywordPresetTypes,
   Locales,
+  MFALevel,
   MessageFlags,
+  OverwriteType,
+  PremiumTier,
   PremiumTypes,
   Status,
+  SystemChannelFlags,
   TextInputStyles,
+  ThreadAutoArchiveDuration,
+  VerificationLevel,
 } from './enums.js';
 
 export interface ClientOptions {
@@ -584,4 +598,139 @@ export interface MessagePayloadAttachment {
   data: string | Buffer;
   spoiler?: boolean;
   description?: string;
+}
+
+export interface EditChannelPermissionsPayload
+{
+  allow: string;
+  deny: string;
+  type: OverwriteType;
+}
+
+export interface RawGuildData
+{
+  id: snowflake;
+  name: string;
+  icon: string | null;
+  icon_hash: string | null;
+  splash: string | null;
+  discovery_splash: string | null;
+  owner?: boolean;
+  owner_id: snowflake;
+  permissions?: string;
+  afk_channel_id: snowflake | null;
+  afk_timeout: integer;
+  widget_enabled?: boolean;
+  widget_channel_id?: snowflake | null;
+  verification_level: VerificationLevel;
+  default_message_notifications: DefaultMessageNotifications;
+  explicit_content_filter: ExplicitContentFilterLevel;
+  roles: RawRoleData[];
+  emojis: RawEmojiData[];
+  features: GuildFeatures[];
+  mfa_level: MFALevel;
+  application_id?: snowflake;
+  system_channel_id?: snowflake;
+  system_channel_flags: SystemChannelFlags;
+  rules_channel_id?: snowflake;
+  max_presences?: integer;
+  max_members?: integer;
+  vanity_url_code?: string;
+  description?: string;
+  banner?: string;
+  premium_tier: PremiumTier;
+  premium_subscription_count?: integer;
+  preferred_locale: Locales;
+  public_updates_channel_id?: snowflake;
+  max_video_channel_users?: integer;
+  approximate_member_count?: integer;
+  approximate_presence_count?: integer;
+  welcome_screen?: RawWelcomeScreenData;
+  nsfw_level: GuildNSFWLevel;
+  stickers?: RawStickerData[];
+  premium_progress_bar_enabled?: boolean;
+}
+
+export interface RawWelcomeScreenData
+{
+  description: string | null;
+  welcome_channels: RawWelcomeScreenChannelData[];
+}
+
+export interface RawWelcomeScreenChannelData
+{
+  channel_id: snowflake;
+  description: string;
+  emoji_id: snowflake | null;
+  emoji_name: string | null;
+}
+
+export interface RawInviteData
+{
+  code: string;
+  guild?: RawGuildData;
+  channel: RawChannelData;
+  inviter?: RawUserData;
+  target_user?: RawUserData;
+  target_type?: InviteTargetTypes;
+  target_application?: RawApplicationData;
+  approximate_presence_count?: integer;
+  approximate_member_count?: integer;
+  expires_at?: string;
+  guild_scheduled_event?: RawGuildScheduledEventData;
+}
+
+export interface RawGuildScheduledEventData
+{
+  id: snowflake;
+  guild_id: snowflake;
+  channel_id: snowflake | null;
+  creator_id?: snowflake | null;
+  name: string;
+  description?: string;
+  scheduled_start_time: string;
+  scheduled_end_time: string | null;
+  privacy_level: GuildScheduledEventPrivacyLevel;
+  status: GuildScheduledEventStatus;
+  entity_type: GuildScheduledEventEntityType;
+  entity_id?: snowflake | null;
+  entity_metadata?: RawGuildScheduledEventEntityMetadata  | null;
+  creator?: RawUserData;
+  user_count?: integer;
+  image?: string | null;
+}
+
+export interface RawGuildScheduledEventEntityMetadata
+{
+  location?: string;
+}
+
+export interface CreateChannelInvitePayload
+{
+  maxAge?: integer;
+  maxUses?: integer;
+  temporary?: boolean;
+  unique?: boolean;
+  targetUserId?: snowflake;
+  targetType?: InviteTargetTypes;
+  targetApplicationId?: snowflake;
+  
+}
+
+export interface GroupDMAddRecipientPayload
+{
+  accessToken: string;
+  nick: string;
+}
+
+export interface StartThreadPayload
+{
+  name: string;
+  autoArchiveDuration: ThreadAutoArchiveDuration;
+  rateLimitPerUser?: integer;
+}
+export interface StartThreadInForumPayload extends StartThreadPayload
+{
+  message: MessagePayload;
+  applied_tags?: snowflake[];
 }

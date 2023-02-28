@@ -82,7 +82,7 @@ export default class Message {
   mentions: {
     everyone: boolean;
     roles?: Snowflake[];
-    users: Camelize<RawUserData>[];
+    users: User[];
     channels?: Camelize<RawChannelMentionData>[];
   };
 
@@ -108,7 +108,7 @@ export default class Message {
     this.mentions = {
       everyone: data.mention_everyone ?? false,
       roles: data.mention_roles.map((x) => BigInt(x)) ?? [],
-      users: <Camelize<RawUserData>[]>convertToCamelCase(data.mentions) ?? [],
+      users: data.mentions.map(x => new User(x,this.#client)) ?? [],
       channels:
         <Camelize<RawChannelMentionData>[] | undefined>(
           convertToCamelCase(data.mention_channels)
@@ -156,8 +156,9 @@ export default class Message {
     inspect: any,
   ) {
     // @ts-ignore
-    if (depth < 0) return `${this.__proto__.constructor.name} < ${this.id} >`;
-    return `User < ${this.id} > {
+    if ( depth < 0 ) return `${ this.__proto__.constructor.name } < ${ this.id } >`;
+    // @ts-ignore
+    return `${this.__proto__.constructor.name} < ${this.id} > {
   ${Object.entries(this)
     .map(
       ([key, value]) =>
